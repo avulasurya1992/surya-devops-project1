@@ -5,12 +5,14 @@ module "vpc" {
 }
 
 module "subnets" {
-  source              = "../../modules/subnets"
-  vpc_id              = module.vpc.vpc_id
-  vpc_name            = "project-one"
-  public_subnet_cidr  = var.public_subnet_cidr
-  private_subnet_cidr = var.private_subnet_cidr
-  az                  = var.az
+  source               = "../../modules/subnets"
+  vpc_id               = module.vpc.vpc_id
+  vpc_name             = "project-one"
+  public_subnet_cidr   = var.public_subnet_cidr
+  private_subnet_cidr  = var.private_subnet_cidr
+  az                   = var.az
+  public_subnet_cidr_2 = var.public_subnet_cidr_2
+  az2                  = var.az2
 }
 
 module "internet_gateway" {

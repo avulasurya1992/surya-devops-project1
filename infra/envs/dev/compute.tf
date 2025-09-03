@@ -47,11 +47,12 @@ module "compute_asg" {
 module "compute_alb" {
   source = "../../modules/alb"
 
-  vpc_id           = module.vpc.vpc_id
-  public_subnet_id = module.subnets.public_subnet_id
-  alb_sg_id        = module.security_groups.alb_sg_id
-  target_group_arn = module.compute_asg.target_group_arn
-#  project_name     = "project-one"
+  vpc_id             = module.vpc.vpc_id
+  public_subnet_id   = module.subnets.public_subnet_id
+  alb_sg_id          = module.security_groups.alb_sg_id
+  public_subnet_id_2 = module.subnets.public_subnet_id_2
+  target_group_arn   = module.compute_asg.target_group_arn
+  #  project_name     = "project-one"
 }
 
 

@@ -3,4 +3,5 @@ variable "vpc_name" {}
 variable "public_subnet_cidr" {}
 variable "private_subnet_cidr" {}
 variable "az" {}
-
+variable "public_subnet_cidr_2" {}
+variable "az2" {}

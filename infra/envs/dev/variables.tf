@@ -11,3 +11,9 @@ variable "az" {
   default = "us-east-1a"
 }
 
+variable "public_subnet_cidr_2" {
+  default = "10.0.3.0/24"
+}
+variable "az2" {
+  default = "us-east-1b"
+}
