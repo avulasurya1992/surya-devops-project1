@@ -26,7 +26,7 @@ name = "project-one-asg"
 desired_capacity = var.desired_capacity
 max_size = var.max_size
 min_size = var.min_size
-vpc_zone_identifier = [var.private_subnet_id]
+vpc_zone_identifier = [var.private_subnet_id, var.private_subnet_id_2]
 health_check_grace_period = 90
 health_check_type = "ELB"
 
