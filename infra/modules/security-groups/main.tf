@@ -44,6 +44,15 @@ resource "aws_security_group" "private_sg" {
   description = "Allow outbound internet access via NAT"
   vpc_id      = var.vpc_id
 
+  # Add this ingress block for app traffic from ALB
+  ingress {
+    description = "App traffic from ALB"
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    security_groups = [aws_security_group.public_sg.id]
+  }
+
   egress {
     from_port   = 0
     to_port     = 0
@@ -55,4 +64,3 @@ resource "aws_security_group" "private_sg" {
     Name = "${var.vpc_name}-private-sg"
   }
 }
-
