@@ -21,7 +21,7 @@ default = null
 variable "app_port" {
 description = "Application port exposed by instances"
 type = number
-default = 8080
+default = 80
 }
 
 

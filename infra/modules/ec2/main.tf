@@ -39,20 +39,13 @@ role = aws_iam_role.project_one_ec2_role.name
 locals {
 project_one_user_data = <<-EOF
 #!/bin/bash
-set -eux
-dnf update -y || yum update -y || true
-dnf install -y python3 || yum install -y python3 || true
-cat > /opt/app.py <<'PY'
-from http.server import BaseHTTPRequestHandler, HTTPServer
-class H(BaseHTTPRequestHandler):
-def do_GET(self):
-self.send_response(200)
-self.send_header('Content-type','text/plain')
-self.end_headers()
-self.wfile.write(b"project-one: hello from EC2 ASG!\n")
-HTTPServer(("0.0.0.0", ${var.app_port}), H).serve_forever()
-PY
-nohup python3 /opt/app.py >/var/log/project-one-app.log 2>&1 &
+# Use this for your user data (script from top to bottom)
+# install httpd (Linux 2 version)
+yum update -y
+yum install -y httpd
+systemctl start httpd
+systemctl enable httpd
+echo "<h1>Hello World from $(hostname -f)</h1>" > /var/www/html/index.html
 EOF
 }
 

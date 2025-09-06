@@ -15,7 +15,7 @@ module "compute_ec2" {
   app_sg_id     = module.security_groups.app_sg_id
   instance_type = "t3.micro"
   key_name      = null # or set to "project-one-key" if you created it
-  app_port      = 8080
+  app_port      = 80
   tags = {
     Project = "project-one"
     Env     = "dev"
@@ -30,11 +30,11 @@ module "compute_asg" {
   launch_template_id = module.compute_ec2.launch_template_id
 
 
-  app_port          = 8080
+  app_port          = 80
   health_check_path = "/"
-  desired_capacity  = 1
-  min_size          = 1
-  max_size          = 2
+  desired_capacity  = 2
+  min_size          = 2
+  max_size          = 3
 
 
   tags = {

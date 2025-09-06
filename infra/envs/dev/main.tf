@@ -28,13 +28,14 @@ module "nat_gateway" {
 }
 
 module "route_tables" {
-  source            = "../../modules/route-tables"
-  vpc_id            = module.vpc.vpc_id
-  vpc_name          = "project-one"
-  igw_id            = module.internet_gateway.igw_id
-  nat_gateway_id    = module.nat_gateway.nat_gateway_id
-  public_subnet_id  = module.subnets.public_subnet_id
-  private_subnet_id = module.subnets.private_subnet_id
+  source             = "../../modules/route-tables"
+  vpc_id             = module.vpc.vpc_id
+  vpc_name           = "project-one"
+  igw_id             = module.internet_gateway.igw_id
+  nat_gateway_id     = module.nat_gateway.nat_gateway_id
+  public_subnet_id   = module.subnets.public_subnet_id
+  public_subnet_id_2 = module.subnets.public_subnet_id_2
+  private_subnet_id  = module.subnets.private_subnet_id
 }
 
 module "security_groups" {
